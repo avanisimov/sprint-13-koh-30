@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
@@ -100,7 +101,11 @@ class MainActivity : AppCompatActivity() {
                                 )
                             )
                         }
+                        if (cartItems.size > 0) {
+                            binding.cartEmptyTitle.isVisible = false
+                        }
                         cartItemsAdapter.setItems(cartItems)
+                        binding.bottomNavigation.getOrCreateBadge(R.id.cart).number = cartItems.size
                         it.copy(count = 1)
                     } else {
                         it
@@ -185,11 +190,13 @@ class MainActivity : AppCompatActivity() {
                 ScreenMode.CATALOG -> {
                     binding.catalogContainer.visibility = View.VISIBLE
                     binding.cartContainer.visibility = View.GONE
+                    binding.toolbar.setTitle(R.string.catalog_title)
                 }
 
                 ScreenMode.CART -> {
                     binding.catalogContainer.visibility = View.GONE
                     binding.cartContainer.visibility = View.VISIBLE
+                    binding.toolbar.setTitle(R.string.cart_title)
                 }
             }
             currentScreenMode = newScreenMode
