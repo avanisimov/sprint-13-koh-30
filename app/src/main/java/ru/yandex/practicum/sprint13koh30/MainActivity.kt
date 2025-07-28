@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+
         setContentView(binding.root)
 
         changeCurrentScreenMode(ScreenMode.CATALOG)
@@ -101,6 +102,7 @@ class MainActivity : AppCompatActivity() {
                             )
                         }
                         cartItemsAdapter.setItems(cartItems)
+                        binding.bottomNavigation.getOrCreateBadge(R.id.cart).number = cartItems.size
                         it.copy(count = 1)
                     } else {
                         it
