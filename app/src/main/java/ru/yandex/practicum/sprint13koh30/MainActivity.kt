@@ -101,6 +101,7 @@ class MainActivity : AppCompatActivity() {
                             )
                         }
                         cartItemsAdapter.setItems(cartItems)
+                        binding.bottomNavigation.getOrCreateBadge(R.id.cart).number = cartItems.size
                         it.copy(count = 1)
                     } else {
                         it
