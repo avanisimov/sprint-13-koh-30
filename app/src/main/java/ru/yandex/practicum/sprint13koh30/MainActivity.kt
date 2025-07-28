@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
@@ -99,6 +100,9 @@ class MainActivity : AppCompatActivity() {
                                     count = 1
                                 )
                             )
+                        }
+                        if (cartItems.size > 0) {
+                            binding.cartEmptyTitle.isVisible = false
                         }
                         cartItemsAdapter.setItems(cartItems)
                         binding.bottomNavigation.getOrCreateBadge(R.id.cart).number = cartItems.size
