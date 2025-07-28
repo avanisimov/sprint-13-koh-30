@@ -10,7 +10,7 @@ interface ServerApi {
     companion object {
         fun create(): ServerApi {
             return Retrofit.Builder()
-                .baseUrl("https://raw.githubusercontent.com/avanisimov/sprint-13-koh-29/main/")
+                .baseUrl("https://raw.githubusercontent.com/avanisimov/sprint-13-koh-30/main/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ServerApi::class.java)
